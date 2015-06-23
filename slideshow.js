@@ -1,8 +1,7 @@
 /*
  TO DO:
   1. Add support for browsers that don't support figure elements
-  2. Remove figure as hook in CSS; if I give it a class of "photo", the JS removes the photo class when it gives it a class of "hide"
- 
+   
 */
 
 
@@ -11,13 +10,14 @@
 // Get array with photos
 var photos = document.getElementsByTagName("figure"); // Returns object of photos
 var numPhotos = photos.length;
-var shownPhoto;
+var shownPhotoIndex;
 
-// Hide all photos except first (if JS is not enabled, all photos will show)
+// Hide all photos except first by giving class of "hide" (if JS is not enabled, all photos will show)
 function hidePhotos() {
   for (var i = 0; i < numPhotos; i++) {
-    if (photos[i] !== photos[0]) {
-       photos[i].className = "hide";
+   if (photos[i] !== photos[0]) {
+      photos[i].className += " hide";
+           
     } // end if statement
     
   } // end for statement
@@ -51,12 +51,12 @@ function addControls() {
 } // end addControls
 
 
-
 // Find curently shown photo
 function findShownPhoto() {
   for (var i = 0; i < numPhotos; i++) {
-    if (photos[i].className != "hide") {
-        shownPhoto = i;
+    // if the image does not contain a class of "hide"
+    if (photos[i].className.indexOf("hide") == -1) {
+        shownPhotoIndex = i;
     }  // end if statement  
   } // end for statement
 } // end findShownPhoto
@@ -72,20 +72,20 @@ function progressSlides() {
         findShownPhoto();
         
         // If current photo is last photo, go to first photo
-        if (shownPhoto == (numPhotos - 1)) {
+        if (shownPhotoIndex == (numPhotos - 1)) {
           nextPhoto = photos[0];
         } else {
-          nextPhoto = photos[shownPhoto + 1];
+          nextPhoto = photos[shownPhotoIndex + 1];
         }
         
         // Hide current photo
-        photos[shownPhoto].setAttribute("class", "hide");
+           // Add the "hide" class to the list of existing classes
+           photos[shownPhotoIndex].className += " hide";
         
-        // Show next photo
-        nextPhoto.removeAttribute("class", "hide");
-        
-        
-       
+        // Show next photo by removing "hide" class
+          // Create a new string with classes that removes "hide"
+          var newClass= nextPhoto.className.replace("hide", "");
+          nextPhoto.className = newClass;
       } // end next click
       
     var previous = document.getElementById("previous");
@@ -93,22 +93,25 @@ function progressSlides() {
         var prevPhoto;
         findShownPhoto();
         // If current photo is first photo, go to last photo
-        if (shownPhoto == 0) {
+        if (shownPhotoIndex == 0) {
           prevPhoto = photos[numPhotos - 1];
         } else {
-          prevPhoto = photos[shownPhoto - 1];
+          prevPhoto = photos[shownPhotoIndex - 1];
         }
         // Hide current photo
-        photos[shownPhoto].setAttribute("class", "hide");
+        photos[shownPhotoIndex].className += " hide";
         
        // Show previous photo
-        prevPhoto.removeAttribute("class", "hide");
+        var newClass= prevPhoto.className.replace("hide", "");
+        prevPhoto.className = newClass;
+        
+        
+        
       } // end previous click
   } // end progressSlides
   
-
-hidePhotos();
 addControls();
+hidePhotos();
 progressSlides();
 
 

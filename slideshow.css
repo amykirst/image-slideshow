@@ -9,6 +9,10 @@ body {
   box-sizing:border-box
 }
 
+figure {
+    margin:0;
+}
+
 #slideshow {
   display:inline-block;
   padding:0;
@@ -17,7 +21,7 @@ body {
   max-width:920px
 }
 
-#slideshow figure {
+.photo {
   margin:0;
   position:relative
 /* To position captions */

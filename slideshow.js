@@ -1,11 +1,11 @@
-/*
- TO DO:
-  1. Add support for browsers that don't support figure elements
-   
-*/
-
-
-
+/* To Do
+ 
+ IE 8 is not calculating the position of the controls the same as Chrome
+  - Maybe add an event listener if window is resized?
+  - When the window is resized, the image width and height also change in IE, but the controls aren't being repositioned; need an event
+ In IE 8, controls do not stay in the middle if window is resized
+ 
+ */
 
 // Get array with photos
 var photos = document.getElementsByTagName("figure"); // Returns object of photos
@@ -40,14 +40,14 @@ function addControls() {
   document.getElementById("next").innerHTML = "<p>>></p>";
   document.getElementById("previous").innerHTML = "<p><<</p>";
   // Calculate position of buttons
-    var getImage = photos[0].firstElementChild;
-    var imageHeight = (getImage.height);
-    var imageWidth = (getImage.width);
-    var paddingTop = (imageHeight / imageWidth) * 100;
-    paddingTop = +paddingTop.toFixed(2);
-    var percent = paddingTop + "%";
-    document.getElementById("previous").style.paddingBottom = percent;
-    document.getElementById("next").style.paddingBottom = percent;
+  var getImage = photos[0].children[0]; // IE 8 does not support photos[0].firstElementChild;
+  var imageHeight = (getImage.height); 
+  var imageWidth = (getImage.width); 
+  var paddingTop = (imageHeight / imageWidth) * 100;
+  paddingTop = +paddingTop.toFixed(2);
+  var percent = paddingTop + "%";
+  document.getElementById("previous").style.paddingBottom = percent; 
+  document.getElementById("next").style.paddingBottom = percent;
 } // end addControls
 
 
@@ -109,10 +109,17 @@ function progressSlides() {
         
       } // end previous click
   } // end progressSlides
-  
-addControls();
+
+// Run JS after images have downloaded
+window.onload = function(){
+    addControls();
+    progressSlides();
+}
+
+
 hidePhotos();
-progressSlides();
+
+
 
 
 

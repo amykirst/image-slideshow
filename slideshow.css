@@ -10,7 +10,7 @@ body {
 }
 
 figure {
-    margin:0;
+  margin:0
 }
 
 #slideshow {
@@ -23,8 +23,8 @@ figure {
 
 .photo {
   margin:0;
-  position:relative
-/* To position captions */
+  position: relative;
+  /* To position captions */
 }
 
 .hide {
@@ -51,8 +51,7 @@ figure {
 
 #previous,#next {
   height:0;
-  /*padding-bottom:65.9%; */
-  /* Padding-bottom is added via JS; calculates based on height of image */
+/* Padding-bottom is added via JS; calculates based on height of image */
   position:absolute;
   top:0
 }
@@ -68,31 +67,30 @@ figure {
   text-align:center;
   font-weight:700;
   opacity:.8;
-  position:absolute; /* positioned in relation to the #previous and #next spans */
+  position:absolute;
+/* positioned in relation to the #previous and #next spans */
   top:50%;
-  -moz-transform:translateY(-50%);
-  -webkit-transform:translateY(-50%);
-  -o-transform:translateY(-50%);
-  -ms-transform:translateY(-50%);
-  transform:translateY(-50%)
+  margin-top:-1.6em
+/* previously used transformY(-50%) to bring arrow up half the width of itself; not supported in IE 8 */
 }
 
 #previous p {
-    left:0;
-    border-radius:0 5px 5px 0;
+  left:0;
+  border-radius:0 5px 5px 0
 }
 
 #next p {
-  right:0; /*moves button to right corner of span instead of left */
-  border-radius:5px 0 0 5px;
+  right:0;
+/*moves button to right corner of span instead of left */
+  border-radius:5px 0 0 5px
 }
 
 #previous {
-    left: 0;
+  left:0
 }
 
 #next {
-    right: 0;
+  right:0
 }
 
 #previous:hover,#next:hover {

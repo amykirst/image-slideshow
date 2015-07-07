@@ -21,11 +21,6 @@ figure {
   max-width:920px
 }
 
-.photo {
-  margin:0;
-  position: relative;
-  /* To position captions */
-}
 
 .hide {
   display:none
@@ -34,7 +29,8 @@ figure {
 #slideshow img {
   width:100%;
   border-top-left-radius:10px;
-  border-top-right-radius:10px
+  border-top-right-radius:10px;
+  margin-top: 1em;
 }
 
 #slideshow figcaption {
@@ -57,7 +53,7 @@ figure {
 }
 
 #previous p,#next p {
-  margin:0;
+
   display:table;
   padding:1em 10px;
   color:#fff;
@@ -70,7 +66,7 @@ figure {
   position:absolute;
 /* positioned in relation to the #previous and #next spans */
   top:50%;
-  margin-top:-1.6em
+  margin:-1em 0 0 0;
 /* previously used transformY(-50%) to bring arrow up half the width of itself; not supported in IE 8 */
 }
 

@@ -69,10 +69,10 @@ function progressSlides() {
     } else {
       nextPhoto = photos[shownPhotoIndex + 1];
     }
-    // Add the "hide" class to the list of existing classes
+    // Add the "hide" class to the list of existing classes for shown photo
     photos[shownPhotoIndex].className += " hide";
     // Show next photo by removing "hide" class
-    var newClass = nextPhoto.className.replace("hide", "");
+    var newClass = nextPhoto.className.replace(" hide", "");
     nextPhoto.className = newClass;
     }; // end next click
   var previous = document.getElementById("previous");

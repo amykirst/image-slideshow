@@ -23,7 +23,12 @@ figure {
 
 
 .hide {
-  display:none
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* left and right positioning retains image dimensions in IE 8 */
 }
 
 #slideshow img {
